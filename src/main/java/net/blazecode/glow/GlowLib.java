@@ -1,4 +1,4 @@
-package net.blazecode.example;
+package net.blazecode.glow;
 
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
@@ -8,17 +8,27 @@ import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+
+import java.util.logging.Logger;
 
 @Environment( EnvType.SERVER )
-public class ExampleMod implements DedicatedServerModInitializer
+public class GlowLib implements DedicatedServerModInitializer
 {
-
-	public static final String MODID = "example";
+	public static final String MODID = "glow";
+	public static final Logger LOGGER = Logger.getLogger( MODID );
 
 	@Override
 	public void onInitializeServer( )
 	{
 		AutoConfig.register(ModConfig.class, JanksonConfigSerializer::new);
+		CommandRegistrationCallback.EVENT.register( ( dispatcher, dedicated) ->
+		{
+			if(dedicated)
+			{
+				//VanillaCommand.register(dispatcher);
+			}
+		});
 	}
 
 	public static ModConfig getConfig()

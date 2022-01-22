@@ -1,29 +1,29 @@
 {
   "schemaVersion": 1,
-  "id": "example",
+  "id": "glow",
   "version": "${version}",
 
-  "name": "Example",
-  "description": "A server-side mod template",
+  "name": "Glow",
+  "description": "A server-side utility library",
   "authors": [
     "BlazeCode"
   ],
   "contact": {
     "homepage": "https://github.com/BlazeCodeNet",
-    "sources": "https://github.com/BlazeCodeNet/fabric-template"
+    "sources": "https://github.com/BlazeCodeNet/GlowFabric"
   },
 
   "license": "CC0-1.0",
-  "icon": "assets/template/icon.png",
+  "icon": "assets/glow/icon.png",
 
   "environment": "server",
   "entrypoints": {
     "server": [
-      "net.blazecode.example.ExampleMod"
+      "net.blazecode.glow.GlowLib"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "glow.mixins.json"
   ],
 
   "depends": {
