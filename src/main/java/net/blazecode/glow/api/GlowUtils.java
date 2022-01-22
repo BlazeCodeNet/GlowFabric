@@ -9,10 +9,7 @@ import net.minecraft.network.packet.s2c.play.PlaySoundS2CPacket;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvent;
-import net.minecraft.text.LiteralText;
-import net.minecraft.text.MutableText;
-import net.minecraft.text.Style;
-import net.minecraft.text.Text;
+import net.minecraft.text.*;
 import net.minecraft.util.Formatting;
 
 import java.util.List;
@@ -23,6 +20,28 @@ public class GlowUtils
     public static MutableText getText( String text, Formatting... formattings)
     {
         return new LiteralText(text).setStyle( Style.EMPTY.withItalic(false).withFormatting(formattings) );
+    }
+
+    public static MutableText getLinkedText(MutableText text, String url)
+    {
+        Style newStyle = text.getStyle().withClickEvent( new ClickEvent( ClickEvent.Action.OPEN_URL, url ) );
+        return text.setStyle( newStyle );
+    }
+    public static MutableText getCommandableText(MutableText text, String command)
+    {
+        Style newStyle = text.getStyle().withClickEvent( new ClickEvent( ClickEvent.Action.RUN_COMMAND, command ) );
+        return text.setStyle( newStyle );
+    }
+
+    public static MutableText getHoverableText( MutableText text , MutableText hoverText )
+    {
+        Style newStyle = text.getStyle().withHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_TEXT, hoverText ) );
+        return text.setStyle( newStyle );
+    }
+    public static MutableText getHoverableText( MutableText text, ItemStack stack )
+    {
+        Style newStyle = text.getStyle().withHoverEvent( new HoverEvent( HoverEvent.Action.SHOW_ITEM, new HoverEvent.ItemStackContent( stack ) ) );
+        return text.setStyle( newStyle );
     }
 
     public static void playSoundToPlayer( ServerPlayerEntity player, SoundEvent event, float vol, float pitch)

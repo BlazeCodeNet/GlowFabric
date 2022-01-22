@@ -5,6 +5,7 @@ import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.JanksonConfigSerializer;
 import me.shedaniel.cloth.clothconfig.shadowed.blue.endless.jankson.Comment;
+import net.blazecode.glow.commands.GlowCommand;
 import net.fabricmc.api.DedicatedServerModInitializer;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 public class GlowLib implements DedicatedServerModInitializer
 {
 	public static final String MODID = "glow";
+	public static final String VERSION = "0.0.1";
 	public static final Logger LOGGER = Logger.getLogger( MODID );
 
 	@Override
@@ -26,7 +28,7 @@ public class GlowLib implements DedicatedServerModInitializer
 		{
 			if(dedicated)
 			{
-				//VanillaCommand.register(dispatcher);
+				GlowCommand.register(dispatcher);
 			}
 		});
 	}

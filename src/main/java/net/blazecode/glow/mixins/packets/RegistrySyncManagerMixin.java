@@ -22,9 +22,9 @@ public class RegistrySyncManagerMixin
             if ( isClientSync &&
                     (
                             obj instanceof GlowItem ||
-                                    obj instanceof GlowEntity ||
-                                    obj instanceof GlowBlockState ||
-                                    obj instanceof GlowRecipe
+                            obj instanceof GlowEntity ||
+                            obj instanceof GlowBlockState ||
+                            obj instanceof GlowRecipe
                     )
             )
             {
